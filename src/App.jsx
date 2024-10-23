@@ -1,7 +1,11 @@
-import "./App.css";
+import DessertCard from "./components/desserts/DessertCard";
 
 function App() {
-  return <></>;
+  return (
+    <div className="cart-wrapper">
+      <DessertCard />
+    </div>
+  );
 }
 
 export default App;
