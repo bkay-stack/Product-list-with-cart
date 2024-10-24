@@ -1,9 +1,9 @@
-import DessertCard from "./components/desserts/DessertCard";
+import Dessert from "./component/desesert/Dessert";
 
 function App() {
   return (
     <div className="cart-wrapper">
-      <DessertCard />
+      <Dessert />
     </div>
   );
 }
