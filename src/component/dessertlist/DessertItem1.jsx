@@ -1,8 +1,11 @@
 import "./dessertitem1.style.css";
 import data from "../../data.json";
 import imgCart from "../../../public/assets/images/icon-add-to-cart.svg";
+import { useState } from "react";
 
 const DessertItem1 = () => {
+  const [itemQuantity, setItemQuantity] = useState(0);
+
   console.log("Component rendering");
   console.log("Data:", data);
   return (
@@ -12,14 +15,30 @@ const DessertItem1 = () => {
         return (
           <div key={productList.name} className="img-wrapper">
             <img src={productList.image.mobile} alt={productList.name} />
-            <div className="img-cart">
-              {/* <div className="cart-items"> */}
+            {/* <div className="img-cart">
               <div>
                 <img src={imgCart} alt="" />
               </div>
               <p>Add to Cart</p>
-              {/* </div> */}
-            </div>
+            </div> */}
+                <div className="img-cart">
+
+itemQuantity <= 0   <div>
+ <div>
+   <img src={imgCart} alt="" />
+ </div>
+ <p>Add to Cart</p>
+
+</div>
+
+itemQuantity > 0  {
+    <div>
+      <button>-</button>
+      <span> {itemQuantity} </span>
+      <button>+</button>
+    </div>
+  }
+  </div>
             <div className="items-names">
               <span>{productList.category}</span>
               <h3>{productList.name}</h3>
