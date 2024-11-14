@@ -1,32 +1,33 @@
 import "./dessertitem1.style.css";
 import data from "../../data.json";
+import imgCart from "../../../public/assets/images/icon-add-to-cart.svg";
 
 const DessertItem1 = () => {
   console.log("Component rendering");
   console.log("Data:", data);
-
-  if (!data || data.length === 0) {
-    return <p>No dessert data available</p>;
-  }
-
   return (
-    <div className="list-items-one">
-      <div className="item-1">
-        {data.slice(0, 3).map((productList) => {
-          console.log("Mapping item:", productList);
-          return (
-            <div key={productList.name} className="dessert-item">
-              <img
-                src={productList.image.mobile}
-                alt={productList.name}
-                className="dessert-image"
-              />
-              <p>{productList.name}</p>
-              <p>${productList.price.toFixed(2)}</p>
+    <div className="list-items">
+      {data.slice(0, 3).map((productList) => {
+        console.log("Mapping item:", productList);
+        return (
+          <div key={productList.name} className="img-wrapper">
+            <img src={productList.image.mobile} alt={productList.name} />
+            <div className="img-cart">
+              {/* <div className="cart-items"> */}
+              <div>
+                <img src={imgCart} alt="" />
+              </div>
+              <p>Add to Cart</p>
+              {/* </div> */}
             </div>
-          );
-        })}
-      </div>
+            <div className="items-names">
+              <span>{productList.category}</span>
+              <h3>{productList.name}</h3>
+              <h2>{productList.price}</h2>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };

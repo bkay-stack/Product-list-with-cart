@@ -1,6 +1,50 @@
-.list-items-one .item-1 img {
-  width: 150px; /* Adjust the width as needed */
-  height: auto; /* Keeps the aspect ratio */
-  border-radius: 8px; /* Optional: to give rounded corners */
-  margin-bottom: 10px; /* Optional: to add spacing between items */
+.list-items {
+  margin-top: 2.3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.img-wrapper img {
+  border-radius: 10px;
+}
+
+.img-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-rose-50);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.65rem;
+  width: 50%;
+  outline: 2px solid var(--color-rose-400);
+  position: relative;
+  gap: 0.4rem;
+}
+
+.items-names {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  text-align: left;
+}
+
+.items-names span {
+  color: var(--color-rose-500);
+}
+
+.items-names h3 {
+  color: var(--color-rose-900);
+}
+
+.items-names h2 {
+  color: var(--color-red);
+  margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 800px) {
 }
