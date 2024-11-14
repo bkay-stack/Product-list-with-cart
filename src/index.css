@@ -16,15 +16,14 @@ body {
 }
 
 #root {
-  /* display: flex; */
   width: 100%;
-  height: 100vh;
-  height: 100%;
+  display: flex;
 }
 
 .cart-wrapper {
   max-width: 1100px;
-  outline: 5px solid red;
+  margin: 0 auto;
+  width: 100%;
 }
 
 :root {

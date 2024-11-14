@@ -1,0 +1,6 @@
+.list-items-one .item-1 img {
+  width: 150px; /* Adjust the width as needed */
+  height: auto; /* Keeps the aspect ratio */
+  border-radius: 8px; /* Optional: to give rounded corners */
+  margin-bottom: 10px; /* Optional: to add spacing between items */
+}
