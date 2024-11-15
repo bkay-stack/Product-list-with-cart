@@ -24,6 +24,12 @@
   outline: 2px solid var(--color-rose-400);
   position: relative;
   gap: 0.4rem;
+  cursor: pointer;
+}
+
+.cart-items {
+  display: flex;
+  gap: 1rem;
 }
 
 .items-names {

@@ -6,35 +6,44 @@ import { useState } from "react";
 const DessertItem1 = () => {
   const [itemQuantity, setItemQuantity] = useState(0);
 
-  console.log("Component rendering");
-  console.log("Data:", data);
+  const handleIncreaseItemQuantity = () => {
+    setItemQuantity((prevQuantity) => prevQuantity + 1);
+    console.log(itemQuantity);
+  };
+
+  const handleDecreaseItemQuantity = () => {
+    if (itemQuantity > 0) {
+      setItemQuantity((prevQuantity) => prevQuantity - 1);
+    }
+  };
+
   return (
     <div className="list-items">
       {data.slice(0, 3).map((productList) => {
-        console.log("Mapping item:", productList);
         return (
           <div key={productList.name} className="img-wrapper">
             <img src={productList.image.mobile} alt={productList.name} />
-            {/* <div className="img-cart">
-              <div>
-                <img src={imgCart} alt="" />
-              </div>
-              <p>Add to Cart</p>
-            </div> */}
-            <div className="img-cart">
+
+            <div
+              className="img-cart"
+              style={{
+                backgroundColor: itemQuantity > 0 ? "var(--color-red" : "",
+              }}
+            >
               {itemQuantity <= 0 && (
-                <div>
-                  <div>
-                    <img src={imgCart} alt="" />
-                  </div>
+                <div
+                  className="cart-items"
+                  onClick={handleIncreaseItemQuantity}
+                >
+                  <img src={imgCart} alt="" />
                   <p>Add to Cart</p>
                 </div>
               )}
               {itemQuantity > 0 && (
-                <div>
-                  <button>-</button>
+                <div className="item-quantity" style={{}}>
+                  <button onClick={handleDecreaseItemQuantity}>-</button>
                   <span> {itemQuantity} </span>
-                  <button>+</button>
+                  <button onClick={handleIncreaseItemQuantity}>+</button>
                 </div>
               )}
             </div>
