@@ -21,24 +21,23 @@ const DessertItem1 = () => {
               </div>
               <p>Add to Cart</p>
             </div> */}
-                <div className="img-cart">
-
-itemQuantity <= 0   <div>
- <div>
-   <img src={imgCart} alt="" />
- </div>
- <p>Add to Cart</p>
-
-</div>
-
-itemQuantity > 0  {
-    <div>
-      <button>-</button>
-      <span> {itemQuantity} </span>
-      <button>+</button>
-    </div>
-  }
-  </div>
+            <div className="img-cart">
+              {itemQuantity <= 0 && (
+                <div>
+                  <div>
+                    <img src={imgCart} alt="" />
+                  </div>
+                  <p>Add to Cart</p>
+                </div>
+              )}
+              {itemQuantity > 0 && (
+                <div>
+                  <button>-</button>
+                  <span> {itemQuantity} </span>
+                  <button>+</button>
+                </div>
+              )}
+            </div>
             <div className="items-names">
               <span>{productList.category}</span>
               <h3>{productList.name}</h3>
