@@ -2,10 +2,16 @@
   margin-top: 2.3rem;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .img-wrapper img {
   border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.img-wrapper:hover > img {
+  border: 3px solid var(--color-red);
 }
 
 .img-cart {
@@ -13,13 +19,13 @@
   justify-content: center;
   align-items: center;
   background-color: var(--color-rose-50);
-  padding: 0.5rem 1rem;
+
   border-radius: 20px;
   position: absolute;
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 0.65rem;
+  padding: 0.85rem 1.2rem;
   width: 50%;
   outline: 2px solid var(--color-rose-400);
   position: relative;
@@ -30,6 +36,33 @@
 .cart-items {
   display: flex;
   gap: 1rem;
+}
+
+.item-quantity {
+  display: flex;
+  gap: 3.7rem;
+}
+
+.item-quantity span {
+  color: var(--color-rose-50);
+  font-size: 1.1rem;
+}
+
+.item-quantity button {
+  border-radius: 60%;
+  border: none;
+  padding: 0.2rem 0.2rem;
+  background-color: var(--color-red);
+  outline: 2px solid white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+}
+.item-quantity button img {
+  width: 40px;
+  object-fit: contain;
 }
 
 .items-names {
