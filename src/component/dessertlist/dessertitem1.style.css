@@ -7,7 +7,7 @@
 
 .img-wrapper img {
   border-radius: 10px;
-  transition: all 0.3s ease-in-out;
+  /* transition: border.3s ease-in-out; */
 }
 
 .img-wrapper:hover > img {
@@ -86,4 +86,7 @@
 }
 
 @media screen and (min-width: 800px) {
+  .img-cart {
+    padding: 0.45rem 1rem;
+  }
 }

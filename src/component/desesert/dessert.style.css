@@ -1,7 +1,17 @@
+.header {
+  display: flex;
+  align-items: center;
+}
+
 .header h1 {
   font-size: 4rem;
   color: var(--color-rose-900);
 }
 
 @media screen and (min-width: 800px) {
+  .flex {
+    display: flex;
+    /* outline: 6px solid green; */
+    gap: 3rem;
+  }
 }

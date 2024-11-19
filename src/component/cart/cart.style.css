@@ -1,0 +1,9 @@
+.cartItems {
+  background-color: var(--color-rose-50);
+  padding: 2rem;
+  border-radius: 2px;
+}
+
+.cart-Items-header h1 {
+  color: var(--color-red);
+}
