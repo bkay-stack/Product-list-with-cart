@@ -7,8 +7,9 @@ import { useState } from "react";
 
 const DessertItem1 = () => {
   // State to track quantities for individual items
+
   const [itemQuantities, setItemQuantities] = useState(
-    data.slice(0, 3).map(() => ({ quantity: 0, toggled: false }))
+    data.map(() => ({ quantity: 0, toggled: false }))
   );
 
   const handleToggle = (index) => {
@@ -17,7 +18,9 @@ const DessertItem1 = () => {
         i === index
           ? {
               ...item,
+
               toggled: !item.toggled,
+
               quantity: !item.toggled ? 1 : 0,
             }
           : item
@@ -31,6 +34,7 @@ const DessertItem1 = () => {
         i === index
           ? {
               ...item,
+
               quantity: item.quantity + 1,
             }
           : item
@@ -44,7 +48,9 @@ const DessertItem1 = () => {
         i === index
           ? {
               ...item,
+
               quantity: item.quantity > 1 ? item.quantity - 1 : 0,
+
               toggled: item.quantity <= 1 ? false : item.toggled,
             }
           : item
@@ -54,7 +60,7 @@ const DessertItem1 = () => {
 
   return (
     <div className="list-items">
-      {data.slice(0, 3).map((productList, index) => (
+      {data.map((productList, index) => (
         <div
           key={productList.name}
           className={`img-wrapper ${
@@ -62,6 +68,7 @@ const DessertItem1 = () => {
           }}`}
         >
           <img src={productList.image.mobile} alt={productList.name} />
+
           <div
             className="img-cart"
             style={{
@@ -72,6 +79,7 @@ const DessertItem1 = () => {
             {!itemQuantities[index].toggled ? (
               <div className="cart-items" onClick={() => handleToggle(index)}>
                 <img src={imgCart} alt="Add to cart" />
+
                 <p>Add to Cart</p>
               </div>
             ) : (
@@ -79,7 +87,9 @@ const DessertItem1 = () => {
                 <button onClick={() => handleDecreaseItemQuantity(index)}>
                   <img src={removeImg} alt="Decrease quantity" />
                 </button>
+
                 <span>{itemQuantities[index].quantity}</span>
+
                 <button onClick={() => handleIncreaseItemQuantity(index)}>
                   <img src={addImg} alt="Increase quantity" />
                 </button>
@@ -89,7 +99,9 @@ const DessertItem1 = () => {
 
           <div className="items-names">
             <span>{productList.category}</span>
+
             <h3>{productList.name}</h3>
+
             <h2>${productList.price.toFixed(2)}</h2>
           </div>
         </div>
