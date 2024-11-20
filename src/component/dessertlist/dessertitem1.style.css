@@ -1,13 +1,13 @@
 .list-items {
   margin-top: 2.3rem;
-  display: flex;
+  display: grid;
   flex-direction: column;
   cursor: pointer;
 }
 
 .img-wrapper img {
   border-radius: 10px;
-  /* transition: border.3s ease-in-out; */
+  transition: border 0.3s ease-in-out;
 }
 
 .img-wrapper:hover > img {
@@ -88,5 +88,10 @@
 @media screen and (min-width: 800px) {
   .img-cart {
     padding: 0.45rem 1.5rem;
+  }
+
+  .list-items {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
   }
 }

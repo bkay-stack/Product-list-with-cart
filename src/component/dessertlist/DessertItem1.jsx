@@ -3,28 +3,34 @@ import data from "../../data.json";
 import imgCart from "../../../public/assets/images/icon-add-to-cart.svg";
 import addImg from "../../../public/assets/images/icon-increment-quantity.svg";
 import removeImg from "../../../public/assets/images/icon-decrement-quantity.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const DessertItem1 = () => {
-  // State to track quantities for individual items
+  const [itemQuantities, setItemQuantities] = useState(() => {
+    const savedData = localStorage.getItem("itemQuantities");
+    return savedData
+      ? JSON.parse(savedData)
+      : data.map(() => ({ quantity: 0, toggled: false }));
+  });
 
-  const [itemQuantities, setItemQuantities] = useState(
-    data.map(() => ({ quantity: 0, toggled: false }))
-  );
+  // Save to localStorage whenever state changes
+  useEffect(() => {
+    localStorage.setItem("itemQuantities", JSON.stringify(itemQuantities));
+  }, [itemQuantities]);
 
   const handleToggle = (index) => {
     setItemQuantities((prevQuantities) =>
-      prevQuantities.map((item, i) =>
-        i === index
-          ? {
-              ...item,
+      prevQuantities.map((item, i) => {
+        if (i === index) {
+          return {
+            ...item,
+            toggled: !item.toggled,
+            quantity: !item.toggled ? 1 : 0,
+          };
+        }
 
-              toggled: !item.toggled,
-
-              quantity: !item.toggled ? 1 : 0,
-            }
-          : item
-      )
+        return item;
+      })
     );
   };
 
@@ -34,7 +40,6 @@ const DessertItem1 = () => {
         i === index
           ? {
               ...item,
-
               quantity: item.quantity + 1,
             }
           : item
@@ -48,9 +53,7 @@ const DessertItem1 = () => {
         i === index
           ? {
               ...item,
-
               quantity: item.quantity > 1 ? item.quantity - 1 : 0,
-
               toggled: item.quantity <= 1 ? false : item.toggled,
             }
           : item
@@ -60,6 +63,7 @@ const DessertItem1 = () => {
 
   return (
     <div className="list-items">
+      {/* Product list */}
       {data.map((productList, index) => (
         <div
           key={productList.name}
@@ -68,7 +72,6 @@ const DessertItem1 = () => {
           }}`}
         >
           <img src={productList.image.mobile} alt={productList.name} />
-
           <div
             className="img-cart"
             style={{
@@ -87,9 +90,7 @@ const DessertItem1 = () => {
                 <button onClick={() => handleDecreaseItemQuantity(index)}>
                   <img src={removeImg} alt="Decrease quantity" />
                 </button>
-
                 <span>{itemQuantities[index].quantity}</span>
-
                 <button onClick={() => handleIncreaseItemQuantity(index)}>
                   <img src={addImg} alt="Increase quantity" />
                 </button>
@@ -99,9 +100,7 @@ const DessertItem1 = () => {
 
           <div className="items-names">
             <span>{productList.category}</span>
-
             <h3>{productList.name}</h3>
-
             <h2>${productList.price.toFixed(2)}</h2>
           </div>
         </div>
