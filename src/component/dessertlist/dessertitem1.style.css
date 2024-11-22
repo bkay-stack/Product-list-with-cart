@@ -3,6 +3,7 @@
   display: grid;
   flex-direction: column;
   cursor: pointer;
+  width: 100%;
 }
 
 .img-wrapper img {
@@ -36,6 +37,7 @@
 .cart-items {
   display: flex;
   gap: 1rem;
+  /* outline: 1px solid green; */
 }
 
 .item-quantity {
@@ -86,12 +88,12 @@
 }
 
 @media screen and (min-width: 800px) {
-  .img-cart {
-    padding: 0.45rem 1.5rem;
-  }
-
   .list-items {
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
+  }
+
+  .img-cart {
+    padding: 0.45rem 1.5rem;
   }
 }

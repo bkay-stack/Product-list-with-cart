@@ -22,15 +22,21 @@ img {
 
 #root {
   display: flex;
-  align-items: center;
   padding: 1rem;
   /* justify-self: center; */
 }
 
 .cart-wrapper {
-  max-width: 1100px;
+  max-width: 1600px;
   margin: 0 auto;
   width: 100%;
+  display: grid;
+
+  grid-template-columns: 3fr 1fr;
+}
+
+.cart-wrapper {
+  /* min-width: 700px; */
 }
 
 :root {

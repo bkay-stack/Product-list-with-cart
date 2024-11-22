@@ -1,4 +1,5 @@
 import "./dessertitem1.style.css";
+// import Cart from "../cart/Cart";
 import data from "../../data.json";
 import imgCart from "../../../public/assets/images/icon-add-to-cart.svg";
 import addImg from "../../../public/assets/images/icon-increment-quantity.svg";
