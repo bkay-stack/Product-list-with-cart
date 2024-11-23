@@ -1,5 +1,5 @@
 import DessertItem1 from "../dessertlist/DessertItem1";
-import Cart from "../cart/Cart";
+
 import "./dessert.style.css";
 const Dessert = () => {
   return (

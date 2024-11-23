@@ -21,9 +21,10 @@ img {
 }
 
 #root {
-  display: flex;
+  min-height: 100vh;
   padding: 1rem;
-  /* justify-self: center; */
+  height: 100%;
+  width: 100%;
 }
 
 .cart-wrapper {
@@ -35,8 +36,16 @@ img {
   grid-template-columns: 3fr 1fr;
 }
 
-.cart-wrapper {
-  /* min-width: 700px; */
+@media screen and (max-width: 800px) {
+  .cart-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cart-card {
+    order: 2;
+    margin-top: 2rem;
+  }
 }
 
 :root {

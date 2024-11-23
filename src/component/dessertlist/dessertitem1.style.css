@@ -1,9 +1,10 @@
 .list-items {
   margin-top: 2.3rem;
   display: grid;
-  flex-direction: column;
+  /* flex-direction: column; */
   cursor: pointer;
   width: 100%;
+  /* outline: 3px solid red; */
 }
 
 .img-wrapper img {
@@ -92,6 +93,10 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
   }
+  /* 
+  .list-items {
+    order: 1;
+  } */
 
   .img-cart {
     padding: 0.45rem 1.5rem;
