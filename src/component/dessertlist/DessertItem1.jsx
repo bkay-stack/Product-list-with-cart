@@ -1,12 +1,12 @@
+import PropTypes from "prop-types";
 import "./dessertitem1.style.css";
-// import Cart from "../cart/Cart";
 import data from "../../data.json";
 import imgCart from "../../../public/assets/images/icon-add-to-cart.svg";
 import addImg from "../../../public/assets/images/icon-increment-quantity.svg";
 import removeImg from "../../../public/assets/images/icon-decrement-quantity.svg";
 import { useState, useEffect } from "react";
 
-const DessertItem1 = () => {
+const DessertItem1 = ({ cartAdd }) => {
   const [itemQuantities, setItemQuantities] = useState(() => {
     const savedData = localStorage.getItem("itemQuantities");
     return savedData
@@ -21,18 +21,21 @@ const DessertItem1 = () => {
 
   const handleToggle = (index) => {
     setItemQuantities((prevQuantities) =>
-      prevQuantities.map((item, i) => {
-        if (i === index) {
-          return {
-            ...item,
-            toggled: !item.toggled,
-            quantity: !item.toggled ? 1 : 0,
-          };
-        }
-
-        return item;
-      })
+      prevQuantities.map((item, i) =>
+        i === index
+          ? {
+              ...item,
+              toggled: !item.toggled,
+              quantity: !item.toggled ? 1 : 0,
+            }
+          : item
+      )
     );
+
+    // Add to global cart if toggled on
+    if (!itemQuantities[index].toggled) {
+      cartAdd(data[index].id); // Pass item ID to `cartAdd`
+    }
   };
 
   const handleIncreaseItemQuantity = (index) => {
@@ -46,6 +49,7 @@ const DessertItem1 = () => {
           : item
       )
     );
+    cartAdd(data[index].id); // Notify global cart of change
   };
 
   const handleDecreaseItemQuantity = (index) => {
@@ -65,14 +69,14 @@ const DessertItem1 = () => {
   return (
     <div className="list-items">
       {/* Product list */}
-      {data.map((productList, index) => (
+      {data.map((product, index) => (
         <div
-          key={productList.name}
+          key={product.id}
           className={`img-wrapper ${
             itemQuantities[index].quantity > 0 ? "highlight-border" : ""
-          }}`}
+          }`}
         >
-          <img src={productList.image.mobile} alt={productList.name} />
+          <img src={product.image.mobile} alt={`${product.name}`} />
           <div
             className="img-cart"
             style={{
@@ -83,7 +87,6 @@ const DessertItem1 = () => {
             {!itemQuantities[index].toggled ? (
               <div className="cart-items" onClick={() => handleToggle(index)}>
                 <img src={imgCart} alt="Add to cart" />
-
                 <p>Add to Cart</p>
               </div>
             ) : (
@@ -100,9 +103,9 @@ const DessertItem1 = () => {
           </div>
 
           <div className="items-names">
-            <span>{productList.category}</span>
-            <h3>{productList.name}</h3>
-            <h2>${productList.price.toFixed(2)}</h2>
+            <span>{product.category}</span>
+            <h3>{product.name}</h3>
+            <h2>${product.price.toFixed(2)}</h2>
           </div>
         </div>
       ))}
