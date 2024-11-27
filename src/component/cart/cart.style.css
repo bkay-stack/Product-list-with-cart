@@ -1,7 +1,9 @@
 .cartItems {
   background-color: var(--color-rose-50);
   padding: 2rem;
-  border-radius: 2px;
+  border-radius: 10px;
+  /* outline: 1px solid green; */
+  /* margin-left: 5rem; */
 }
 
 .cart-Items-header {
@@ -27,5 +29,6 @@
 @media screen and (min-width: 800px) {
   .cartItems {
     width: 100%;
+    margin-left: 3rem;
   }
 }
