@@ -8,6 +8,22 @@
   color: var(--color-red);
 }
 
+.empty-cart {
+  display: flex;
+  /* outline: 1px solid red; */
+  justify-content: center;
+  align-items: center;
+}
+
+.empty-cart img {
+  width: 170px;
+}
+
+.empty-cart-wrapper p {
+  text-align: center;
+  color: var(--color-rose-500);
+}
+
 @media screen and (min-width: 800px) {
   .cartItems {
     width: 100%;

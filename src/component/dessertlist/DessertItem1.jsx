@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import "./dessertitem1.style.css";
 import data from "../../data.json";
 import imgCart from "../../../public/assets/images/icon-add-to-cart.svg";
@@ -32,9 +31,8 @@ const DessertItem1 = ({ cartAdd }) => {
       )
     );
 
-    // Add to global cart if toggled on
     if (!itemQuantities[index].toggled) {
-      cartAdd(data[index].id); // Pass item ID to `cartAdd`
+      cartAdd(data[index].id);
     }
   };
 
@@ -49,7 +47,7 @@ const DessertItem1 = ({ cartAdd }) => {
           : item
       )
     );
-    cartAdd(data[index].id); // Notify global cart of change
+    cartAdd(data[index].id);
   };
 
   const handleDecreaseItemQuantity = (index) => {

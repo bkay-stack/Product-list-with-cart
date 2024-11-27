@@ -1,7 +1,7 @@
 import Dessert from "./component/desesert/Dessert";
 import Cart from "./component/cart/Cart";
 import data from "./data.json";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 function App() {
   const [cartItems, setCartItems] = useState({});
@@ -12,12 +12,30 @@ function App() {
       console.log(`Product with id ${id} not found`);
       return;
     }
-    console.log(`Adding to cart: ${product.name}`);
     setCartItems((prevItems) => ({
       ...prevItems,
       [id]: (prevItems[id] || 0) + 1,
     }));
   };
+
+  const removeFromCart = (id) => {
+    setCartItems((prevItems) => {
+      const updatedItems = { ...prevItems };
+      if (updatedItems[id] > 1) {
+        updatedItems[id] -= 1;
+      } else {
+        delete updatedItems[id];
+      }
+      return updatedItems;
+    });
+  };
+
+  const getTotalItems = useMemo(() => {
+    return Object.values(cartItems).reduce(
+      (total, quantity) => total + quantity,
+      0
+    );
+  }, [cartItems]);
 
   return (
     <div className="cart-wrapper">
@@ -25,7 +43,11 @@ function App() {
         <Dessert cartAdd={addToCart} />
       </div>
       <div className="cart-card">
-        <Cart cartItems={cartItems} />
+        <Cart
+          totalItems={getTotalItems}
+          cartItems={cartItems}
+          removeFromCart={removeFromCart}
+        />
       </div>
     </div>
   );
