@@ -1,10 +1,22 @@
 import Dessert from "./component/desesert/Dessert";
 import Cart from "./component/cart/Cart";
 import data from "./data.json";
-import { useState, useMemo } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [cartItems, setCartItems] = useState({});
+  const [totalItems, setTotalItems] = useState(0);
+
+  // Update totalItems when cartItems changes
+  useEffect(() => {
+    const total = Object.values(cartItems).reduce(
+      (sum, quantity) => sum + quantity,
+      0
+    );
+    setTotalItems(total);
+    console.log("Cart Item:", cartItems);
+    console.log("selectedItemIDs:", Object.keys(cartItems));
+  }, [cartItems]);
 
   const addToCart = (id) => {
     const product = data.find((product) => product.id === id);
@@ -30,12 +42,13 @@ function App() {
     });
   };
 
-  const getTotalItems = useMemo(() => {
-    return Object.values(cartItems).reduce(
-      (total, quantity) => total + quantity,
-      0
-    );
-  }, [cartItems]);
+  // Extract selected item IDs
+  const selectedItemIDs = Object.keys(cartItems);
+  selectedItemIDs.map((id) => {
+    console.log("Looking for product with ID:", id);
+    const product = data.find((item) => item.id === id);
+    console.log("Found Product:", product);
+  });
 
   return (
     <div className="cart-wrapper">
@@ -44,9 +57,11 @@ function App() {
       </div>
       <div className="cart-card">
         <Cart
-          totalItems={getTotalItems}
+          totalItems={totalItems}
           cartItems={cartItems}
           removeFromCart={removeFromCart}
+          selectedItemIDs={selectedItemIDs}
+          data={data}
         />
       </div>
     </div>
