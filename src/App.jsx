@@ -9,13 +9,13 @@ function App() {
   // Update totalItems when cartItems changes
 
   const addToCart = (id) => {
-    const product = data.find((product) => product.id === id);
-    if (!product) {
-      console.log(`Product with id ${id} not found`);
-      return;
-    }
-    setCartItems((prevItems) => [...prevItems, product]);
+    const productItem = data.find((product) => product.id === id);
+    setCartItems((prevItems) => {
+      return [...prevItems, productItem];
+    });
   };
+
+  console.log(cartItems);
 
   const removeFromCart = (id) => {
     setCartItems((prevItems) => {
@@ -37,6 +37,7 @@ function App() {
       <div className="cart-card">
         <Cart
           cartItems={cartItems}
+          addToCart={addToCart}
           setCartItems={setCartItems}
           removeFromCart={removeFromCart}
           data={data}

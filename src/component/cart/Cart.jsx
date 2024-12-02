@@ -2,7 +2,7 @@ import "./cart.style.css";
 import emptyCartIMG from "../../../public/assets/images/illustration-empty-cart.svg";
 import deleteImg from "../../../public/assets/images/icon-remove-item.svg";
 
-const Cart = ({ cartItems, setCartItems }) => {
+const Cart = ({ cartItems, setCartItems, addToCart }) => {
   const totalQuantity = cartItems.length;
 
   const totalPrice = cartItems.reduce((acc, cur) => {
@@ -12,8 +12,6 @@ const Cart = ({ cartItems, setCartItems }) => {
   const handleDelte = (id) => {
     const updatedItems = cartItems.filter((item) => item.id !== id);
     setCartItems(updatedItems);
-    console.log("delete");
-    console.log(cartItems);
   };
 
   return (
