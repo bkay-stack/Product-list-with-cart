@@ -3,16 +3,17 @@ import emptyCartIMG from "../../../public/assets/images/illustration-empty-cart.
 import deleteImg from "../../../public/assets/images/icon-remove-item.svg";
 
 const Cart = ({ cartItems, setCartItems }) => {
+  const totalQuantity = cartItems.length;
+
   const totalPrice = cartItems.reduce((acc, cur) => {
     return (acc = acc + cur.price);
   }, 0);
-
-  const totalQuantity = cartItems.length;
 
   const handleDelte = (id) => {
     const updatedItems = cartItems.filter((item) => item.id !== id);
     setCartItems(updatedItems);
     console.log("delete");
+    console.log(cartItems);
   };
 
   return (
@@ -31,7 +32,7 @@ const Cart = ({ cartItems, setCartItems }) => {
                     <h4 className="item-name">{item.name}</h4>
                     <div className="total">
                       <strong>
-                        <span className="quantity">{item.totalQuantity}x</span>
+                        <span className="quantity">{}x</span>
                       </strong>
                       <span className="price">@{item.price}</span>
                       <p className="total-price">${item.price}</p>
