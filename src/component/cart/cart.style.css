@@ -26,6 +26,27 @@
   color: var(--color-rose-500);
 }
 
+.total {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.item-name {
+  color: var(--color-rose-900);
+}
+
+.quantity {
+  color: var(--color-red);
+}
+
+.price {
+  color: var(--color-rose-300);
+}
+
+.total-price {
+  color: var(--color-rose-400);
+}
+
 ul {
   list-style: none;
 }

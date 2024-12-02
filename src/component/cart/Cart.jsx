@@ -27,13 +27,23 @@ const Cart = ({ cartItems, setCartItems }) => {
             <ul className="flex-items">
               {cartItems.map((item) => (
                 <li key={item.id}>
-                  <div>{item.name}</div>
+                  <div className="item-wrap">
+                    <h4 className="item-name">{item.name}</h4>
+                    <div className="total">
+                      <strong>
+                        <span className="quantity">{item.totalQuantity}x</span>
+                      </strong>
+                      <span className="price">@{item.price}</span>
+                      <p className="total-price">${item.price}</p>
+                    </div>
+                  </div>
+
                   <div className="delete-items">
                     <img
                       onClick={() => handleDelte(item.id)}
                       src={deleteImg}
                       alt=""
-                    />{" "}
+                    />
                   </div>
                 </li>
               ))}
