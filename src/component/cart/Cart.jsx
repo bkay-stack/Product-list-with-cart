@@ -1,38 +1,45 @@
 import "./cart.style.css";
 import emptyCartIMG from "../../../public/assets/images/illustration-empty-cart.svg";
+import deleteImg from "../../../public/assets/images/icon-remove-item.svg";
 
-const Cart = ({
-  totalItems,
-  cartItems,
-  selectedItemIDs,
-  data,
-  removeFromCart,
-}) => {
+const Cart = ({ cartItems, setCartItems }) => {
+  const totalPrice = cartItems.reduce((acc, cur) => {
+    return (acc = acc + cur.price);
+  }, 0);
+
+  const totalQuantity = cartItems.length;
+
+  const handleDelte = (id) => {
+    const updatedItems = cartItems.filter((item) => item.id !== id);
+    setCartItems(updatedItems);
+    console.log("delete");
+  };
+
   return (
     <div className="cartItems">
-      <h1 className="cart-Items-header">Your Cart: {totalItems}</h1>
-      {totalItems > 0 ? (
-        <div>
-          <p>You have {totalItems} items in your cart!</p>
-          <ul>
-            {selectedItemIDs.map((id) => {
-              // Find the product name using the id
-              const product = data.find((item) => item.id === id);
-              return (
-                <li key={id}>
-                  {product ? (
-                    <>
-                      Product Name: {product.name} - Quantity: {cartItems[id]}
-                      <button onClick={() => removeFromCart(id)}>Remove</button>
-                    </>
-                  ) : (
-                    <p>Product not found for ID: {id}</p>
-                  )}
+      <h1 className="cart-Items-header">Your Cart: {totalQuantity}</h1>
+      {totalQuantity > 0 ? (
+        <>
+          <div>
+            <p>You have {totalQuantity} items in your cart! </p>
+          </div>
+          <div className="cart-list">
+            <ul className="flex-items">
+              {cartItems.map((item) => (
+                <li key={item.id}>
+                  <div>{item.name}</div>
+                  <div className="delete-items">
+                    <img
+                      onClick={() => handleDelte(item.id)}
+                      src={deleteImg}
+                      alt=""
+                    />{" "}
+                  </div>
                 </li>
-              );
-            })}
-          </ul>
-        </div>
+              ))}
+            </ul>
+          </div>
+        </>
       ) : (
         <div className="empty-cart-wrapper">
           <div className="empty-cart">

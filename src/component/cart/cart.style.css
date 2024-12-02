@@ -26,6 +26,24 @@
   color: var(--color-rose-500);
 }
 
+ul {
+  list-style: none;
+}
+
+ul li {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.7rem;
+  cursor: pointer;
+}
+
+.delete-items img {
+  background-color: var(--color-rose-100);
+  border: 1px solid var(--color-rose-100);
+  padding: 0.3rem;
+  border-radius: 40%;
+}
+
 @media screen and (min-width: 800px) {
   .cartItems {
     width: 100%;

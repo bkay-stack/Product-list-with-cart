@@ -1,22 +1,12 @@
 import Dessert from "./component/desesert/Dessert";
 import Cart from "./component/cart/Cart";
 import data from "./data.json";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function App() {
-  const [cartItems, setCartItems] = useState({});
-  const [totalItems, setTotalItems] = useState(0);
+  const [cartItems, setCartItems] = useState([]);
 
   // Update totalItems when cartItems changes
-  useEffect(() => {
-    const total = Object.values(cartItems).reduce(
-      (sum, quantity) => sum + quantity,
-      0
-    );
-    setTotalItems(total);
-    console.log("Cart Item:", cartItems);
-    console.log("selectedItemIDs:", Object.keys(cartItems));
-  }, [cartItems]);
 
   const addToCart = (id) => {
     const product = data.find((product) => product.id === id);
@@ -24,10 +14,7 @@ function App() {
       console.log(`Product with id ${id} not found`);
       return;
     }
-    setCartItems((prevItems) => ({
-      ...prevItems,
-      [id]: (prevItems[id] || 0) + 1,
-    }));
+    setCartItems((prevItems) => [...prevItems, product]);
   };
 
   const removeFromCart = (id) => {
@@ -42,14 +29,6 @@ function App() {
     });
   };
 
-  // Extract selected item IDs
-  const selectedItemIDs = Object.keys(cartItems);
-  selectedItemIDs.map((id) => {
-    console.log("Looking for product with ID:", id);
-    const product = data.find((item) => item.id === id);
-    console.log("Found Product:", product);
-  });
-
   return (
     <div className="cart-wrapper">
       <div className="dessert-card-wrap">
@@ -57,10 +36,9 @@ function App() {
       </div>
       <div className="cart-card">
         <Cart
-          totalItems={totalItems}
           cartItems={cartItems}
+          setCartItems={setCartItems}
           removeFromCart={removeFromCart}
-          selectedItemIDs={selectedItemIDs}
           data={data}
         />
       </div>
