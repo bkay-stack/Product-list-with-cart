@@ -2,16 +2,48 @@ import Dessert from "./component/desesert/Dessert";
 import Cart from "./component/cart/Cart";
 import data from "./data.json";
 import { useState } from "react";
+import ModalComfirmation from "./component/modal/ModalComfirmation";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+    console.log("clicked");
+  };
 
   // Update totalItems when cartItems changes
 
   const addToCart = (id) => {
-    const productItem = data.find((product) => product.id === id);
     setCartItems((prevItems) => {
-      return [...prevItems, productItem];
+      const productItem = data.find((product) => product.id === id);
+
+      if (prevItems.length > 0) {
+        const existingItem = prevItems.find((product) => product.id === id);
+
+        if (existingItem) {
+          // If item already exists in cart, increase its quantity
+          return prevItems.map((prevItem) =>
+            prevItem.id === id
+              ? {
+                  ...prevItem,
+                  quantity: prevItem.quantity + 1,
+                  totalPrice: (prevItem.quantity + 1) * prevItem.price,
+                }
+              : prevItem
+          );
+        } else {
+          // If item is not in cart, add it with quantity 1
+          return [
+            ...prevItems,
+            { ...productItem, quantity: 1, totalPrice: productItem.price },
+          ];
+        }
+      } else {
+        // If cart is empty, add the first item
+        return [{ ...productItem, quantity: 1, totalPrice: productItem.price }];
+      }
     });
   };
 
@@ -41,8 +73,10 @@ function App() {
           setCartItems={setCartItems}
           removeFromCart={removeFromCart}
           data={data}
+          toggleModal={toggleModal}
         />
       </div>
+      {isModalOpen && <ModalComfirmation toggleModal={toggleModal} />}
     </div>
   );
 }
