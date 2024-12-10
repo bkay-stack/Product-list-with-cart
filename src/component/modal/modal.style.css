@@ -1,3 +1,9 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 .modal-background {
   width: 100vw;
   height: 100vh;
@@ -12,15 +18,73 @@
 }
 
 .modal-wrapper {
-  background-color: var(--color-rose-50);
+  background-color: #fff;
   color: var(--color-rose-900);
   padding: 2rem;
   border-radius: 10px;
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
   width: 500px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
   /* text-align: center; */
 }
+
+/* List item */
+.ul-items {
+  list-style: none;
+  background-color: var(--color-rose-50);
+  border-radius: 5px;
+  width: 100%;
+  padding: 0.4rem;
+}
+
+/* Item content */
+.items-content {
+  display: flex;
+  align-items: center;
+}
+
+.flex {
+  margin-left: 12rem;
+}
+
+.total-price-comfirmation {
+  color: var(--color-rose-900);
+  font-weight: bold;
+}
+
+.order-section {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.order-total {
+  font-size: 0.8rem;
+  /* margin-left: 0.6rem; */
+}
+
+.total-price {
+  color: var(--color-rose-900);
+  /* margin-left: 18rem; */
+}
+
+/* Item image */
+
+.item-row-img {
+  width: 50px;
+  display: flex;
+  object-fit: contain;
+}
+
+.order-section {
+  display: flex;
+}
+.total-price-comfirmation {
+  margin-left: 4rem;
+}
+
+/* Order BTN */
 
 .start-new-order button {
   width: 100%;
@@ -29,9 +93,10 @@
   background-color: var(--color-red);
   outline: 1px solid var(--color-rose-900);
   color: #fff;
-  font-size: 1.3rem;
+  font-size: 0.94rem;
   border-radius: 30px;
   cursor: pointer;
+  margin-top: 2rem;
 }
 
 .start-new-order button:hover {

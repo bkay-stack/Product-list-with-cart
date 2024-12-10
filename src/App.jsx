@@ -8,6 +8,7 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Modal
   const toggleModal = () => {
     setIsModalOpen((prevModal) => !prevModal);
     console.log("clicked");
@@ -49,18 +50,6 @@ function App() {
 
   console.log(cartItems);
 
-  const removeFromCart = (id) => {
-    setCartItems((prevItems) => {
-      const updatedItems = { ...prevItems };
-      if (updatedItems[id] > 1) {
-        updatedItems[id] -= 1;
-      } else {
-        delete updatedItems[id];
-      }
-      return updatedItems;
-    });
-  };
-
   return (
     <div className="cart-wrapper">
       <div className="dessert-card-wrap">
@@ -71,12 +60,13 @@ function App() {
           cartItems={cartItems}
           addToCart={addToCart}
           setCartItems={setCartItems}
-          removeFromCart={removeFromCart}
           data={data}
           toggleModal={toggleModal}
         />
       </div>
-      {isModalOpen && <ModalComfirmation toggleModal={toggleModal} />}
+      {isModalOpen && (
+        <ModalComfirmation toggleModal={toggleModal} cartItems={cartItems} />
+      )}
     </div>
   );
 }

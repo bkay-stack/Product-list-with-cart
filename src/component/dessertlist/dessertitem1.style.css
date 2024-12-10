@@ -62,10 +62,13 @@
   align-items: center;
   justify-content: center;
   width: 20px;
+  cursor: pointer;
 }
+
 .item-quantity button img {
   width: 40px;
   object-fit: contain;
+  /* outline: 5px solid green; */
 }
 
 .items-names {
