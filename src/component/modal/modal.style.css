@@ -33,7 +33,6 @@
   list-style: none;
   background-color: var(--color-rose-50);
   border-radius: 5px;
-  width: 100%;
   padding: 0.4rem;
 }
 
@@ -41,10 +40,7 @@
 .items-content {
   display: flex;
   align-items: center;
-}
-
-.flex {
-  margin-left: 12rem;
+  width: 100%;
 }
 
 .total-price-comfirmation {

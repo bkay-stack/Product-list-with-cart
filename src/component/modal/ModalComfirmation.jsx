@@ -38,14 +38,14 @@ const ModalConfirmation = ({ toggleModal, cartItems }) => {
                       <strong>
                         <span className="quantity">{item.quantity}x</span>
                       </strong>
-                    </div>
-                    <span className="price">@{item.price}</span>
-                    <div className="flex">
-                      <p className="total-price-comfirmation">
-                        ${(item.price * item.quantity).toFixed(2)}
-                      </p>
+                      <span className="price">@{item.price}</span>
                     </div>
                   </div>
+                </div>
+                <div className="flex">
+                  <p className="total-price-comfirmation">
+                    ${(item.price * item.quantity).toFixed(2)}
+                  </p>
                 </div>
               </li>
             ))}
