@@ -28,6 +28,21 @@
   /* text-align: center; */
 }
 
+/* Header */
+
+.confirm-header h1 {
+  margin-top: 1rem;
+}
+
+.confirm-header p {
+  color: var(--color-rose-400);
+  margin-top: 0.5rem;
+}
+
+.items-details {
+  margin-top: 1.8rem;
+}
+
 /* List item */
 .ul-items {
   list-style: none;
@@ -41,6 +56,21 @@
   display: flex;
   align-items: center;
   width: 100%;
+}
+
+/* Item row */
+
+.quantity-control {
+  margin-left: 1rem;
+}
+
+.item-name-modal {
+  margin-bottom: 0.7rem;
+}
+
+.quantity {
+  /* margin-top: 4rem; */
+  margin-right: 1rem;
 }
 
 .total-price-comfirmation {
@@ -71,6 +101,7 @@
   width: 50px;
   display: flex;
   object-fit: contain;
+  border-radius: 5px;
 }
 
 .order-section {

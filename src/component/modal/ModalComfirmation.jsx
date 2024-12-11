@@ -28,13 +28,14 @@ const ModalConfirmation = ({ toggleModal, cartItems }) => {
                 <div className="items-content">
                   <div className="img-item-row">
                     <img
-                      src={item.image.mobile}
+                      src={item.image.thumbnail}
                       alt={item.name}
                       className="item-row-img"
                     />
                   </div>
-                  <div className="total">
+                  <div className="total-modal">
                     <div className="quantity-control">
+                      <h4 className="item-name-modal">{item.name}</h4>
                       <strong>
                         <span className="quantity">{item.quantity}x</span>
                       </strong>
