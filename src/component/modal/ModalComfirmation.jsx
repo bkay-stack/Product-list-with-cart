@@ -13,13 +13,11 @@ const ModalConfirmation = ({ toggleModal, cartItems }) => {
   return (
     <div className="modal-background">
       <div className="modal-wrapper">
-        {/* Confirmation Header */}
         <div className="confirm-header">
           <img src={confirmImg} alt="Order Confirmed" />
           <h1>Order Confirmed</h1>
           <p>We hope you enjoy your food</p>
         </div>
-
         {/* Items Details */}
         <div className="items-details">
           <ul className="ul-items">
@@ -57,7 +55,6 @@ const ModalConfirmation = ({ toggleModal, cartItems }) => {
             </div>
           </ul>
         </div>
-
         {/* Start New Order Button */}
         <div className="start-new-order">
           <button onClick={toggleModal}>Start New Order</button>
